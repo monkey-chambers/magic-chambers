@@ -1,0 +1,27 @@
+.modal {
+  height: 1000px;
+  width: 1000px;
+  display: flex;
+  z-index: 1;
+  background-color: white;
+  border-radius: 15px;
+  position: absolute;
+  flex-direction: column;
+  background-color: #2b2b2f;
+  .modal-title {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #f9f9f9;
+  }
+  
+  .modal-body {
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+}

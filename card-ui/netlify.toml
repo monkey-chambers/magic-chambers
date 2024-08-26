@@ -1,0 +1,9 @@
+[build]
+    base = "card-ui/my-app"
+    command = "ng serve"
+    publish = "dist/browser"
+
+    [[redirects]]
+    from = "/*"
+    to = "index.html"
+    status = 200

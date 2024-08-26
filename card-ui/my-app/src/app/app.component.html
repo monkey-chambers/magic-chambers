@@ -1,0 +1,47 @@
+
+<div class="app">
+  <div class="title">
+    <span>    Monkey Chambers Tism Control    </span>
+    <div class="nav">
+      <span (click)="changeView(views.CARD_VIEW)" [ngClass]="{'selected': currentView === views.CARD_VIEW}">Cards</span>
+      <span (click)="changeView(views.IMPORT_VIEW)" [ngClass]="{'selected': currentView === views.IMPORT_VIEW}">Import</span>
+    </div>
+    <div class="color-icon-container">
+      <ng-container *ngFor="let color of colors">
+        <span class="color-icon" (click)="setColorIdentity(color)">
+          <img [src]="'./assets/svg/' + color.toLowerCase() + '.svg'">
+        </span>
+      </ng-container>
+    </div>
+    <div class="filters">
+      <input type="text" placeholder="Search.." [(ngModel)]="filters.searchText">
+      <button (click)="search()">Search</button>
+      <button (click)="clear()">Clear</button>
+    </div>
+  </div>
+  <div class="body">
+    <div *ngIf="currentView === views.CARD_VIEW">
+      <div *ngIf="cards.length > 0" class="cards-container">
+        <div *ngFor="let card of cards">
+          <div class="card">
+            <div class="card-identity">
+              <span>{{card.cardName}}</span>
+              <ng-container *ngFor="let color of card.colors">
+                <img *ngIf="color === 'R'" src="./assets/svg/r.svg">
+              </ng-container>
+            </div>
+            <img *ngIf="card.imageUri" width="200px" [src]="card.imageUri" (click)="openModal(card)">
+            <span>Price: ${{card.price}}</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="cards.length === 0" class="no-data">
+        <span>No Cards Match Current Filters...</span>
+      </div>
+    </div>
+    <div *ngIf="currentView === views.IMPORT_VIEW">
+      <input type="file" class="upload" (change)="changeListener($event)">
+      <button (click)="submit()">submit</button>
+    </div>
+  </div>
+</div>

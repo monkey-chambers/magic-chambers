@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="modal-title">
+    <span>{{card.name}}</span>
+    <span (click)="closeModal()">X</span>
+  </div>
+  <div class="modal-body">
+    <div class="image-container">
+      <div class="card-image" *ngIf="card.imageUri">
+        <img width="200px" [src]="card.imageUri">
+      </div>
+      <div *ngFor="let art of arts" class="card-image">
+        <img width="200px" [src]="art"> 
+      </div>
+    </div>
+  </div>
+</div>
